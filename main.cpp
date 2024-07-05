@@ -484,7 +484,7 @@ GLuint textFarmerTrunk[6];
 GLuint textFarmerArm[1];
 GLuint textFarmerLeg[1];
 GLuint textFarmerFoot[1];
-GLuint textFarmerFootsco[1];
+GLuint textFarmerHead[1];
 GLuint textGround[1];
 GLuint textWallHouse[1];
 GLuint textRoofHouse[1];
@@ -499,16 +499,16 @@ void start() {
     startAnimate(&walk);
     startAnimate(&plant);
 
-    char texture1[] = "fazenderocabe";
-    char texture2[] = "fazenderotronco";
+    char texture1[] = "farmerhead";
+    char texture2[] = "farmtrunk";
     char texture3[] = "textchao";
-    char texture4[] = "telhadocasa";
-    char texture5[] = "paredecasa";
-    char texture6[] = "fazenderocalca";
-    char texture7[] = "fazenderobraco";
-    char texture8[] = "fazenderope";
-    char texture9[] = "fazenderocabe3";
-    char texture10[] = "cantero";
+    char texture4[] = "roofhouse";
+    char texture5[] = "wallhouse";
+    char texture6[] = "farmerleg";
+    char texture7[] = "farmerarm";
+    char texture8[] = "farmerfoot";
+    char texture9[] = "farmerhead3";
+    char texture10[] = "stonecutter";
 
     glClearColor(0.0, 0.0, 0.0, 0.0);
     load6Textures(texture1, textFarmer);
@@ -519,7 +519,7 @@ void start() {
     loadUniqueTexture(texture6, textFarmerLeg);
     loadUniqueTexture(texture7, textFarmerArm);
     loadUniqueTexture(texture8, textFarmerFoot);
-    loadUniqueTexture(texture9, textFarmerFootsco);
+    loadUniqueTexture(texture9, textFarmerHead);
     loadUniqueTexture(texture10, textGround);
     autoAnimationStatus = 0;
     existence.rightArm.top = 0;
@@ -735,7 +735,7 @@ int loadUniqueTexture(char* nome, GLuint* texture) {
     strcpy_s(result, "textures\\");
     strcat_s(result, nome);
     strcat_s(result, ext);
-    texture[0] = SOIL_load_OGL_texture(result, SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y); //carrega texture com uma funcao da biblioteca SOIL
+    texture[0] = SOIL_load_OGL_texture(result, SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y); // loads texture with a function from the SOIL library
 
     if (texture[0] == 0)
         return 0;
@@ -822,7 +822,7 @@ void drawHumanoid() {
 
     glTranslatef(0.125 * tambase, -0.5 * tambase, 0);
     glScalef(0.25, 1, 1);
-    cubeWithUniqueTexture(tambase, textFarmerFootsco);
+    cubeWithUniqueTexture(tambase, textFarmerHead);
     glPopMatrix();
 
     //draw hoe
@@ -891,7 +891,7 @@ void drawHumanoid() {
 
     glTranslatef(-0.125 * tambase, -0.5 * tambase, 0);
     glScalef(0.25, 1, 1);
-    cubeWithUniqueTexture(tambase, textFarmerFootsco);
+    cubeWithUniqueTexture(tambase, textFarmerHead);
     glPopMatrix();
     if (showHoe == 2) {
         glTranslatef(0, -0.7 * tambase, 0);
@@ -936,7 +936,7 @@ void drawHumanoid() {
     glTranslatef(0, 3 * tambase, 0);
     glTranslatef(0, 0.35 * tambase, 0);
     glScalef(0.5, 0.7, 0.5);
-    cubeWithUniqueTexture(tambase, textFarmerFootsco);
+    cubeWithUniqueTexture(tambase, textFarmerHead);
     glPopMatrix();
 
     glPopMatrix();
